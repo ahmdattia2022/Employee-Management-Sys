@@ -1,0 +1,53 @@
+﻿
+@{
+    Layout = null;
+}
+
+@inject WebApplication1.BL.Interface.IDepartmentRep department
+@inject WebApplication1.BL.Interface.IEmployeeRep employee
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+
+
+<body>
+
+    Enter Name <input type="text" id="nameTxt" />
+    <input type="button" value="Click me" id="btn" />
+    <div id="myDiv">
+
+    </div>
+
+
+    <script src="~/plugins/jquery/jquery.js"></script>
+
+    <script>
+        $(function () { //anonymous function
+
+            $("#btn").click(function () {
+                var Name = $("#nameTxt").val();
+                $.ajax({
+                    type: "POST",
+                    url: "/test/Display",
+                    data: { name: Name },
+                    success: function (res) {
+                        $("#myDiv").text(res);
+                    }
+                });
+            })
+        });
+    </script>
+
+
+
+
+
+
+</body>
+</html>
